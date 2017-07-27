@@ -2,7 +2,7 @@
 const int PIN_RED = 2;
 const int PIN_YEL = 3;
 const int PIN_GRN = 4;
-
+long lastChange = 0;
 
 int state = -1;
 
@@ -13,22 +13,26 @@ void setup()
   pinMode(PIN_YEL,OUTPUT);
   pinMode(PIN_GRN,OUTPUT);
   pinMode(5,INPUT);
-
-  digitalWrite(PIN_RED, HIGH);
+   pinMode(6,OUTPUT);
+  digitalWrite(6,HIGH);
 
 }
 
 void loop() 
 {
-  
-      digitalWrite(PIN_RED,digitalRead(5));
-      /*
+      if(digitalRead(5) == HIGH && millis() - lastChange > 250)
+      {
+        state = state +1;
+        state = state %6;
+        lastChange = millis();
+      }
+    
       if(state == 0)
       {
           digitalWrite(PIN_RED, LOW);
           digitalWrite(PIN_YEL, LOW);
           digitalWrite(PIN_GRN, LOW);
-      }
+      }  
        if(state == 1)
       {
           digitalWrite(PIN_RED, HIGH);
@@ -64,11 +68,5 @@ void loop()
           digitalWrite(PIN_YEL, LOW);
           digitalWrite(PIN_GRN, LOW);
       }
-
-    state = (int)  ((millis() / 1000.0));
-    state = state % 7;
-    
-  delay(5);
-  */
-  delay(10);
+      delay(5);
 }
