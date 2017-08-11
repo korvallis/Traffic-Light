@@ -12,10 +12,9 @@ void setup()
   pinMode(PIN_RED,OUTPUT);
   pinMode(PIN_YEL,OUTPUT);
   pinMode(PIN_GRN,OUTPUT);
-  pinMode(5,INPUT);
-   pinMode(6,OUTPUT);
+  pinMode(11,INPUT);
+  pinMode(12,OUTPUT);
   digitalWrite(6,HIGH);
-
 }
 
 void loop() 
